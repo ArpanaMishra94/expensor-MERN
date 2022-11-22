@@ -12,22 +12,11 @@ import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 import IconButton from '@mui/material/IconButton';
 import dayjs from 'dayjs';
 
-// function createData(
-//   name: string,
-//   calories: number,
-//   fat: number,
-//   carbs: number,
-//   protein: number,
-// ) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-
 export default function TransactionsList({transactions, fetchTransactions, setEditTransaction}) {
 
     async function remove(_id) {
         if(!window.confirm('Are you sure')) return;
-         const res = await fetch(`http://localhost:4000/transaction/${_id}`, {
+         const res = await fetch(`${process.env.REACT_APP_API_URL}/transaction/${_id}`, {
             method: 'DELETE',
          });
         if(res.ok) {

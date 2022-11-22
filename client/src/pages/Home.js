@@ -16,7 +16,7 @@ const Home = () => {
     
     async function fetchTransactions() {
       const token = Cookies.get('token');
-      const res = await fetch('http://localhost:4000/transaction', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/transaction`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
