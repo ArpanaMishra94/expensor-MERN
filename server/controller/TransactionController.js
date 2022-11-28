@@ -1,7 +1,7 @@
 import Transaction from "../models/Transaction.js";
 
  export const index = async (req, res) => {
-    const transaction = await Transaction.find({}).sort({createdAt: -1});
+    const transaction = await Transaction.find({user_id : req.user._id}).sort({createdAt: -1});
     res.json({data: transaction});
 }
 
@@ -10,18 +10,20 @@ export const create = async(req, res) => {
     const transaction = new Transaction({
         amount, 
         description, 
-        date
+        date,
+        user_id: req.user._id, 
     });
     await transaction.save();
     res.json({message: 'Success'}); 
 } 
-
+  
 export const destroy = async(req, res) => {
     await Transaction.deleteOne({_id: req.params.id});
     res.json({message: 'Success'});
 }
 
 export const update = async(req, res) => {
+    console.log(req.user);
     await Transaction.updateOne({_id: req.params.id}, {$set: req.body});
     res.json({message: 'Success'});
 }
