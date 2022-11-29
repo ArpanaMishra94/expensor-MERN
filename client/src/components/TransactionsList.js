@@ -12,12 +12,19 @@ import Typography from "@mui/material/Typography";
 import dayjs from "dayjs";
 import * as React from "react";
 import Cookies from 'js-cookie';
+import { useSelector } from "react-redux";
 
 export default function TransactionsList({
   transactions,
   fetchTransctions,
   setEditTransaction,
 }) {
+  const user = useSelector(state => state.auth.user)
+  function categoryName(id) {
+    const category = user.categories.find((category) => category._id === id);
+    return category ? category.label : 'NA';
+  }
+
   async function remove(_id) {
     const token = Cookies.get('token');
     if (!window.confirm("Are you sure")) return;
@@ -66,7 +73,7 @@ export default function TransactionsList({
                   {row.amount}
                 </TableCell>
                 <TableCell align="center">{row.description}</TableCell>
-                <TableCell align="center">{row.category_id}</TableCell>
+                <TableCell align="center">{categoryName(row.category_id)}</TableCell>
                 <TableCell align="center">{formatDate(row.date)}</TableCell>
                 <TableCell align="center">
                   <IconButton
