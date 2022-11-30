@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Cookie from "js-cookie";
 import * as React from "react"; 
 import { useDispatch} from "react-redux"; 
-import { getUser } from "../store/auth.js";
+import { setUser } from "../store/auth.js";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -37,7 +37,7 @@ export default function Login() {
 
     if (res.ok) {
       Cookie.set("token", token);
-      dispatch(getUser(user)); 
+      dispatch(setUser(user)); 
       navigate("/");
     }
   };
