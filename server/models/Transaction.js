@@ -10,7 +10,7 @@ const transactionSchema = new Schema({
         default: "expense",
       },
     user_id: mongoose.Types.ObjectId,
-    category_id: mongoose.Types.ObjectId,
+    // category_id: mongoose.Types.ObjectId,
     date: { 
         type: Date,
         default: new Date() 

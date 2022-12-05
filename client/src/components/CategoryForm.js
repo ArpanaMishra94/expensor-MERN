@@ -32,9 +32,9 @@ export default function CategoryForm({ editCategory }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleDate(newValue) {
-    setForm({ ...form, date: newValue });
-  }
+  // function handleDate(newValue) {
+  //   setForm({ ...form, date: newValue });
+  // }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -79,7 +79,7 @@ export default function CategoryForm({ editCategory }) {
     const _user = {
       ...user,
       categories: user.categories.map((cat) =>
-        cat._id == editCategory._id ? form : cat
+        cat._id === editCategory._id ? form : cat
       ),
     };
     reload(res, _user);
@@ -122,7 +122,7 @@ export default function CategoryForm({ editCategory }) {
             )}
           />
 
-          {editCategory._id !== undefined && (
+          {/* {editCategory._id !== undefined && (
             <Button type="submit" variant="secondary">
               Update
             </Button>
@@ -132,7 +132,7 @@ export default function CategoryForm({ editCategory }) {
             <Button type="submit" variant="contained">
               Submit
             </Button>
-          )}
+          )} */}
         </Box>
       </CardContent>
     </Card>

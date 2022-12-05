@@ -21,7 +21,7 @@ const InitialForm = {
 };
 
 export default function TransactionForm({ fetchTransctions, editTransaction }) {
-  const {categories} = useSelector(state => state.auth.user)
+  // const {categories} = useSelector(state => state.auth.user)
   const token = Cookies.get('token');
   const [form, setForm] = useState(InitialForm);
   const types = ["expense", "income", "transfer"];
@@ -79,9 +79,9 @@ export default function TransactionForm({ fetchTransctions, editTransaction }) {
     reload(res);
   }
 
-  function getCategoryNameById() {
-    return categories.find((category) => category._id === form.category_id) ?? ''
-  }
+  // function getCategoryNameById() {
+  //   return categories.find((category) => category._id === form.category_id) ?? ''
+  // }
 
   return (
     <Card sx={{ minWidth: 275, marginTop: 10 }}>
@@ -133,7 +133,7 @@ export default function TransactionForm({ fetchTransctions, editTransaction }) {
             />
           </LocalizationProvider>
  
-          <Autocomplete
+          {/* <Autocomplete
             value={getCategoryNameById()}
             onChange={(event, newValue) => {
               setForm({ ...form, category_id: newValue._id });
@@ -144,7 +144,7 @@ export default function TransactionForm({ fetchTransctions, editTransaction }) {
             renderInput={(params) => (
               <TextField {...params} sx={{ marginRight: 5 }} size="small" label="Category" />
             )}
-          />
+          /> */}
 
           {editTransaction.amount !== undefined && (
             <Button type="submit" variant="secondary">

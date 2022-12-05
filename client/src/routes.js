@@ -35,14 +35,14 @@ export default createBrowserRouter([
           </Guest>
         ),
       },
-      {
-        path: "/category",
-        element: (
-          <CheckAuth>
-            <Category />
-          </CheckAuth>
-        ),
-      },
+      // {
+      //   path: "/category",
+      //   element: (
+      //     <CheckAuth>
+      //       <Category />
+      //     </CheckAuth>
+      //   ),
+      // },
     ],
   },
 ]);

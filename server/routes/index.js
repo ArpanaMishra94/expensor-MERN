@@ -14,10 +14,10 @@ router.use(
  );
 router.use("/auth", AuthApi);
 router.use("/user", UserApi);
-router.use(
-    "/category", 
-    auth, 
-    CategoryApi
-);
+// router.use(
+//     "/category", 
+//     auth, 
+//     CategoryApi
+// );
 
 export default router;
